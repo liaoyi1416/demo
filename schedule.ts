@@ -6,7 +6,7 @@ const  scheduleCronstyle = ()=>{
     //每天23:59:59定时执行一次: 库存变默认值
     schedule.scheduleJob('59 59 23 * * *',()=>{
         console.log('scheduleCronstyle:' + new Date());
-        let sql1 = `UPDATE goods SET currentInventory = defaultInventory`;
+        let sql1 = `UPDATE inventory SET currentInventory = defaultInventory`;
 
         try {
             let result1 = query(sql1);

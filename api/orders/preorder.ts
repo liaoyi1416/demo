@@ -5,14 +5,14 @@ import query from "../../models/query";
 export const preorder:RequestHandler=async (req, res, next) => {
 
     let id = req.query.id;
-    let sql1 = `select * from goods
+    let sql1 = `select * from inventory
                 WHERE id=${id} and currentInventory > 0`;
-    let sql2 = `UPDATE goods
+    let sql2 = `UPDATE inventory
                 SET currentInventory = currentInventory - 1
                 WHERE id=${id}`;
     try {
         let result1 = await query(sql1);
-        //判断商品存在且数量不为0时
+        //判断商品存在且数量不为0时inventory
         if (result1 && result1.length > 0){
             let result2 = await query(sql2);
             res.json({
